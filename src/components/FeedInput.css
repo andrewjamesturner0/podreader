@@ -1,0 +1,110 @@
+/* ─── Feed Input ──────────────────────────────────────── */
+
+.feed-input {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.feed-input form {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.feed-input input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  background: var(--bg-raised);
+  color: var(--text-primary);
+  transition: border-color var(--transition);
+}
+
+.feed-input input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.feed-input input::placeholder {
+  color: var(--text-muted);
+}
+
+.feed-input button {
+  padding: 8px 14px;
+  background: var(--text-primary);
+  color: var(--bg-raised);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background var(--transition);
+}
+
+.feed-input button:hover {
+  background: var(--text-secondary);
+}
+
+.feed-input button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.import-opml-btn {
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-default) !important;
+  font-size: 0.78rem !important;
+  padding: 6px 10px !important;
+}
+
+.import-opml-btn:hover:not(:disabled) {
+  background: var(--bg-base) !important;
+  border-color: var(--border-strong) !important;
+  color: var(--text-primary) !important;
+}
+
+.import-progress {
+  margin-top: 10px;
+}
+
+.import-progress-bar {
+  height: 2px;
+  background: var(--border-default);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.import-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: width 0.3s ease;
+}
+
+.import-progress-text {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.import-result {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  background: var(--bg-base);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}

@@ -1,0 +1,37 @@
+[Unit]
+Description=PodReader - Podcast Summariser
+After=network.target
+
+[Service]
+Type=simple
+User=podreader
+Group=podreader
+WorkingDirectory=/home/podreader/podreader
+EnvironmentFile=/home/podreader/podreader/.env
+ExecStart=/usr/bin/node dist-server/index.js
+
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/tmp /var/lib/podreader
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=1G
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=podreader
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,196 @@
+/* ─── Episode List ────────────────────────────────────── */
+
+.episode-list {
+  border-bottom: 1px solid var(--border-default);
+  height: 100%;
+  overflow-y: auto;
+  background: var(--bg-raised);
+}
+
+.episode-list h2 {
+  padding: 12px 24px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.refresh-feed-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding: 0;
+  margin-left: 8px;
+  transition: color var(--transition);
+}
+
+.refresh-feed-btn:hover {
+  color: var(--accent-hover);
+}
+
+.refresh-feed-btn:disabled {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+/* ─── Episode Search ─────────────────────────────────── */
+
+.episode-search {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.episode-search-input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+.episode-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ─── Episode Empty & Pagination ─────────────────────── */
+
+.episode-empty {
+  padding: 12px 20px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.episode-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.episode-pagination button {
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  background: var(--bg-raised);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.episode-pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ─── Episode Card ───────────────────────────────────── */
+
+.episode-card {
+  padding: 13px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background var(--transition);
+  cursor: pointer;
+}
+
+.episode-card:hover {
+  background: var(--bg-surface);
+}
+
+.episode-card.selected {
+  background: var(--accent-surface);
+}
+
+.episode-card.selected .episode-info h3 {
+  color: var(--accent-text);
+}
+
+.episode-info {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.episode-info h3 {
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.episode-info .episode-meta {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.episode-status-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-icon {
+  flex-shrink: 0;
+}
+
+.status-dot-empty {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+}
+
+.episode-status {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.episode-status.none {
+  background: var(--bg-surface);
+  color: var(--text-muted);
+}
+
+.episode-status.transcribed {
+  background: var(--status-blue-bg);
+  color: var(--status-blue);
+}
+
+.episode-status.summarised {
+  background: var(--status-green-bg);
+  color: var(--status-green);
+}

@@ -1,0 +1,179 @@
+/* ═══════════════════════════════════════════════════════
+   PodReader — Warm Editorial Minimalism
+   Fonts: DM Sans (UI) · Fraunces (Display headings)
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* Surfaces */
+  --bg-base:    #F5F3EF;
+  --bg-surface: #EBE8E2;
+  --bg-raised:  #FFFFFF;
+
+  /* Borders */
+  --border-subtle:  rgba(28, 25, 23, 0.10);
+  --border-default: rgba(28, 25, 23, 0.18);
+  --border-strong:  rgba(28, 25, 23, 0.30);
+
+  /* Text */
+  --text-primary:   #1C1917;
+  --text-secondary: #5C564E;
+  --text-muted:     #857D74;
+
+  /* Accent — warm copper */
+  --accent:         #B56D3A;
+  --accent-hover:   #9A5728;
+  --accent-surface: #F0E3D7;
+  --accent-text:    #6E3410;
+
+  /* Status colours */
+  --status-green:    #1E5C3E;
+  --status-green-bg: #D4ECDF;
+  --status-blue:     #1B4A8F;
+  --status-blue-bg:  #D2E0F2;
+
+  /* Feedback */
+  --red:    #B33225;
+  --red-bg: #FCE8E5;
+
+  /* Typography */
+  --font-sans:  'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+
+  /* Shape */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* Motion */
+  --transition: 140ms ease;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* ─── Reset ───────────────────────────────────────────── */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── App Shell ───────────────────────────────────────── */
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  animation: appFadeIn 0.25s ease both;
+}
+
+@keyframes appFadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 52px;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border-default);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.app-header h1 {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.settings-btn {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.settings-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  background: var(--bg-surface);
+}
+
+/* ─── Body Layout ─────────────────────────────────────── */
+
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── Sidebar ─────────────────────────────────────────── */
+
+.sidebar {
+  min-width: 180px;
+  max-width: 500px;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-default);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 14px 16px 12px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ─── Main Pane ───────────────────────────────────────── */
+
+.main-pane {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+}
+
+/* ─── Error Message ───────────────────────────────────── */
+
+.error-msg {
+  color: var(--red);
+  background: var(--red-bg);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  margin: 8px 0;
+  border-left: 3px solid var(--red);
+}

@@ -1,0 +1,135 @@
+/* ─── Summary View ────────────────────────────────────── */
+
+.summary-view {
+  flex: 1;
+  background: var(--bg-base);
+}
+
+.summary-view-header {
+  padding: 12px 24px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.summary-view-body {
+  padding: 28px 32px;
+}
+
+.summary-view-body > h2 {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.episode-description-details {
+  margin-bottom: 18px;
+  max-width: 700px;
+}
+
+.episode-description-details > summary {
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.episode-description {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  line-height: 1.5;
+  max-width: 700px;
+}
+
+.summary-view .summary-content {
+  max-width: 700px;
+  line-height: 1.75;
+  color: var(--text-primary);
+  font-size: 0.91rem;
+}
+
+.summary-view .summary-content h1 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  color: var(--text-primary);
+}
+
+.summary-view .summary-content h2 {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  margin-top: 2.2em;
+  margin-bottom: 0.9em;
+}
+
+.summary-view .summary-content h3 {
+  font-family: var(--font-sans);
+  font-size: 0.91rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.summary-view p {
+  margin-bottom: 0.9em;
+}
+
+.summary-view ul,
+.summary-view ol {
+  padding-left: 1.5em;
+  margin-bottom: 0.9em;
+}
+
+.summary-view li {
+  margin-bottom: 0.3em;
+}
+
+.summary-view .no-selection {
+  color: var(--text-muted);
+  font-size: 0.87rem;
+  padding: 60px 32px;
+}
+
+/* ─── Episode Actions ─────────────────────────────────── */
+
+.episode-actions button {
+  padding: 7px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-default);
+  background: var(--bg-raised);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.episode-actions button:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-surface);
+}
+
+.episode-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

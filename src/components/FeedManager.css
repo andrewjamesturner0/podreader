@@ -1,0 +1,153 @@
+/* ─── Feed List ───────────────────────────────────────── */
+
+.feed-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.feed-item {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background var(--transition);
+}
+
+.feed-item:hover {
+  background: rgba(28, 25, 23, 0.04);
+}
+
+.feed-item.selected {
+  background: var(--accent-surface);
+}
+
+.feed-item.selected .feed-item-info h3 {
+  color: var(--accent-text);
+}
+
+.feed-item.selected .feed-item-info p {
+  color: var(--accent);
+}
+
+.feed-item img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.feed-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-item-info h3 {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feed-item-info p {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feed-item .remove-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: all var(--transition);
+}
+
+.feed-item:hover .remove-btn {
+  opacity: 1;
+}
+
+.feed-item .remove-btn:hover {
+  color: var(--red);
+  background: var(--red-bg);
+}
+
+/* Virtual feed items (Most Recent, All Summarised) */
+.virtual-feed-item {
+  /* items live at top of list — no special positioning needed */
+}
+
+.feed-list-divider {
+  border: none;
+  border-top: 1px solid var(--border-default);
+  margin: 4px 0;
+}
+
+.virtual-feed-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feed-error-indicator {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--red-bg, rgba(239, 68, 68, 0.15));
+  color: var(--red, #ef4444);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ─── Feed Sort Buttons ──────────────────────────────── */
+
+.feed-sort-buttons {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.feed-sort-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+.feed-sort-btn:hover {
+  color: var(--text-primary);
+}
+
+.feed-sort-btn.active {
+  background: var(--accent-surface);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}

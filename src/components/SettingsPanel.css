@@ -1,0 +1,60 @@
+/* ─── Settings Panel ──────────────────────────────────── */
+
+.settings-panel {
+  padding: 16px 24px;
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.settings-panel h2 {
+  font-size: 0.87rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.settings-row label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  min-width: 130px;
+}
+
+.settings-row input,
+.settings-row select {
+  padding: 7px 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  flex: 1;
+  max-width: 400px;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  transition: border-color var(--transition);
+}
+
+.settings-row input:focus,
+.settings-row select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ─── Local LLM / Whisper Setup ──────────────────────── */
+
+.local-llm-setup,
+.local-whisper-setup {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-base);
+}
