@@ -58,3 +58,34 @@
   border-radius: var(--radius-md);
   background: var(--bg-base);
 }
+
+@media (max-width: 640px) {
+  .settings-panel {
+    padding: 14px 16px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .settings-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .settings-row label {
+    min-width: 0;
+  }
+
+  .settings-row input[type="text"],
+  .settings-row input[type="password"],
+  .settings-row input:not([type]) {
+    font-size: 16px;
+    max-width: none;
+    padding: 10px 12px;
+  }
+
+  .settings-row select {
+    max-width: none;
+    padding: 10px 12px;
+  }
+}

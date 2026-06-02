@@ -133,3 +133,43 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+@media (max-width: 640px) {
+  .summary-view-header {
+    padding: 12px 16px;
+  }
+
+  .summary-view-body {
+    padding: 18px 16px;
+  }
+
+  .summary-view-body > h2 {
+    font-size: 1.3rem;
+    overflow-wrap: anywhere;
+  }
+
+  .summary-view .summary-content {
+    font-size: 0.95rem;
+  }
+
+  .summary-view .summary-content pre,
+  .summary-view .summary-content img,
+  .summary-view .summary-content table {
+    max-width: 100%;
+  }
+
+  .summary-view .summary-content pre {
+    overflow-x: auto;
+  }
+
+  .episode-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .episode-actions button {
+    min-height: 44px;
+    flex: 1 1 auto;
+  }
+}

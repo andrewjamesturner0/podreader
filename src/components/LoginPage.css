@@ -7,7 +7,8 @@
 }
 
 .login-form {
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   padding: 32px;
   background: #2a2a2a;
   border-radius: 8px;
@@ -69,4 +70,24 @@
   color: #4a9eff;
   cursor: pointer;
   font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .login-page {
+    padding: 16px;
+  }
+
+  .login-form {
+    padding: 24px;
+  }
+
+  .login-field input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .login-submit {
+    min-height: 44px;
+    font-size: 16px;
+  }
 }

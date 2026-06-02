@@ -70,6 +70,7 @@ body {
 
 .app {
   height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   animation: appFadeIn 0.25s ease both;
@@ -176,4 +177,61 @@ body {
   font-size: 0.82rem;
   margin: 8px 0;
   border-left: 3px solid var(--red);
+}
+
+/* ─── Mobile ──────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0 12px;
+    height: 48px;
+  }
+
+  .app-header h1 {
+    font-size: 0.9rem;
+  }
+
+  .app-header .username {
+    display: none;
+  }
+
+  .settings-btn {
+    min-height: 44px;
+    padding: 6px 12px;
+  }
+
+  .app.is-mobile .app-body {
+    flex-direction: column;
+  }
+
+  .app.is-mobile .sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .app.is-mobile .resize-handle {
+    display: none;
+  }
+
+  .app.is-mobile .main-pane > .episode-pane {
+    height: auto;
+    min-height: 0;
+    flex: 1;
+  }
+
+  .back-btn {
+    background: transparent;
+    border: 1px solid var(--border-default);
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    min-height: 44px;
+    margin-right: 8px;
+  }
 }

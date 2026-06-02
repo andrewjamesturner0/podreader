@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import './App.css';
 import { AuthProvider, useAuth } from './hooks/useAuth';
-import { FeedProvider } from './hooks/useFeeds';
+import { FeedProvider, useFeeds } from './hooks/useFeeds';
 import { SettingsProvider, useSettings } from './hooks/useSettings';
 import FeedManager from './components/FeedManager';
 import EpisodeList from './components/EpisodeList';
@@ -20,9 +20,29 @@ function AppLayout() {
   const [showSettings, setShowSettings] = useState(false);
   const { settings, updateSetting, loaded } = useSettings();
   const { user, logout } = useAuth();
+  const { selectedFeedUrl, selectedEpisodeId, selectFeed, selectEpisode } = useFeeds();
 
   const [sidebarWidth, setSidebarWidth] = useState(SIDEBAR_DEFAULT);
   const [episodeHeight, setEpisodeHeight] = useState(EPISODE_DEFAULT);
+
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches
+  );
+
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 640px)');
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
+
+  const mobileView: 'feeds' | 'episodes' | 'summary' =
+    !selectedFeedUrl ? 'feeds' : !selectedEpisodeId ? 'episodes' : 'summary';
+
+  const handleBack = () => {
+    if (mobileView === 'summary') selectEpisode(null);
+    else if (mobileView === 'episodes') selectFeed(null);
+  };
 
   // Load persisted panel sizes from settings
   useEffect(() => {
@@ -69,12 +89,24 @@ function AppLayout() {
     return () => clearTimeout(timer);
   }, [episodeHeight, loaded]);
 
+  const showBack = isMobile && mobileView !== 'feeds';
+  const showSidebar = !isMobile || mobileView === 'feeds';
+  const showEpisodes = !isMobile || mobileView === 'episodes';
+  const showSummary = !isMobile || mobileView === 'summary';
+
   return (
-    <div className="app">
+    <div className={`app${isMobile ? ' is-mobile' : ''}`}>
       <header className="app-header">
-        <h1>PodReader</h1>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {showBack && (
+            <button className="back-btn" onClick={handleBack} aria-label="Back">
+              ← Back
+            </button>
+          )}
+          <h1>PodReader</h1>
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          {user && <span style={{ fontSize: '0.85rem', color: '#888' }}>{user.username}</span>}
+          {user && <span className="username" style={{ fontSize: '0.85rem', color: '#888' }}>{user.username}</span>}
           <button
             className="settings-btn"
             onClick={() => setShowSettings(!showSettings)}
@@ -90,17 +122,33 @@ function AppLayout() {
       </header>
       {showSettings && <SettingsPanel />}
       <div className="app-body">
-        <aside className="sidebar" style={{ width: sidebarWidth, minWidth: SIDEBAR_MIN }}>
-          <FeedManager />
-        </aside>
-        <ResizeHandle direction="horizontal" onResize={handleSidebarResize} />
-        <main className="main-pane">
-          <div style={{ height: episodeHeight, minHeight: EPISODE_MIN, overflow: 'hidden', flexShrink: 0 }}>
-            <EpisodeList />
-          </div>
-          <ResizeHandle direction="vertical" onResize={handleEpisodeResize} />
-          <SummaryView />
-        </main>
+        {showSidebar && (
+          <aside
+            className="sidebar"
+            style={isMobile ? undefined : { width: sidebarWidth, minWidth: SIDEBAR_MIN }}
+          >
+            <FeedManager />
+          </aside>
+        )}
+        {!isMobile && <ResizeHandle direction="horizontal" onResize={handleSidebarResize} />}
+        {(showEpisodes || showSummary) && (
+          <main className="main-pane">
+            {showEpisodes && (
+              <div
+                className="episode-pane"
+                style={
+                  isMobile
+                    ? { flex: 1, overflow: 'hidden' }
+                    : { height: episodeHeight, minHeight: EPISODE_MIN, overflow: 'hidden', flexShrink: 0 }
+                }
+              >
+                <EpisodeList />
+              </div>
+            )}
+            {!isMobile && <ResizeHandle direction="vertical" onResize={handleEpisodeResize} />}
+            {showSummary && <SummaryView />}
+          </main>
+        )}
       </div>
     </div>
   );

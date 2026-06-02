@@ -151,3 +151,26 @@
   color: var(--accent-text);
   border-color: var(--accent);
 }
+
+@media (max-width: 640px) {
+  .feed-item {
+    padding: 14px 16px;
+    min-height: 44px;
+  }
+
+  .feed-item-info h3 {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .feed-item-info p {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .feed-item .remove-btn {
+    opacity: 1;
+    min-height: 36px;
+    min-width: 36px;
+  }
+}

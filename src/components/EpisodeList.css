@@ -194,3 +194,28 @@
   background: var(--status-green-bg);
   color: var(--status-green);
 }
+
+@media (max-width: 640px) {
+  .episode-list h2 {
+    padding: 12px 16px;
+  }
+
+  .episode-search {
+    padding: 8px 12px;
+  }
+
+  .episode-search-input {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+
+  .episode-card {
+    padding: 14px 16px;
+    min-height: 44px;
+  }
+
+  .episode-info h3 {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
