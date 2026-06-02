@@ -13,9 +13,10 @@ import {
 const router = Router();
 
 // Fix #2: Download with size limit
-async function downloadAudio(url: string, dest: string, hostHeader?: string): Promise<void> {
-  const headers: Record<string, string> = {};
-  if (hostHeader) headers['Host'] = hostHeader;
+async function downloadAudio(url: string, dest: string): Promise<void> {
+  const headers: Record<string, string> = {
+    'User-Agent': 'PodReader/1.0',
+  };
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10 * 60 * 1000); // 10 minutes
   const res = await fetch(url, { headers, signal: controller.signal }).finally(() => clearTimeout(timeout));
