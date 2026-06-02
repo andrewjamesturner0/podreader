@@ -15,6 +15,7 @@ CLAUDE.md
 # Test & build output
 test-results/
 eval-results/
+shared/*.js
 
 # Data
 *.db
