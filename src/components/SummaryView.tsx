@@ -1,9 +1,41 @@
 import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import type { Summary } from '../../shared/types';
 import { useFeeds } from '../hooks/useFeeds';
 import { useSummary } from '../hooks/useSummary';
 import ProgressIndicator from './ProgressIndicator';
 import './SummaryView.css';
+
+function slugify(input: string): string {
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 80) || 'summary';
+}
+
+function downloadSummaryMarkdown(title: string, summary: Summary) {
+  const generated = new Date(summary.createdAt).toISOString();
+  const frontmatter = [
+    '---',
+    `title: ${JSON.stringify(title)}`,
+    `provider: ${summary.provider}`,
+    `model: ${summary.model}`,
+    `generated: ${generated}`,
+    '---',
+    '',
+  ].join('\n');
+  const content = `${frontmatter}# ${title}\n\n${summary.markdown}\n`;
+  const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${slugify(title)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 
 // Fix #9: Strip dangerous URI schemes from markdown links
 function sanitizeLinkUri(uri: string): string {
@@ -81,6 +113,14 @@ export default function SummaryView() {
           {summary && (
             <button onClick={() => runSummarisation(transcript?.text)} disabled={stage !== 'idle'} style={{ marginLeft: 8 }}>
               Re-summarise
+            </button>
+          )}
+          {summary && (
+            <button
+              onClick={() => downloadSummaryMarkdown(episode?.title || 'summary', summary)}
+              style={{ marginLeft: 8 }}
+            >
+              Download Markdown
             </button>
           )}
         </div>
